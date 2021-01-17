@@ -1,46 +1,44 @@
 const mongoose = require("mongoose");
-require("../Helper/Init_mongoose");
 const Schema = mongoose.Schema;
+
 const userSchema = new Schema({
   googleId: {
     type: String,
     trim: true,
-    // required: true
+    required: true
   },
-  role:{
-      type:String,
-      default:"member"
+  role: {
+    type: String,
+    default: "member",
   },
   name: {
     type: String,
     trim: true,
-    // required: true
+    required: true
   },
   branch: {
     type: String,
     trim: true,
-    // required: true
   },
   year: {
     type: String,
     trim: true,
-    // required: true
   },
   rollNo: {
     type: String,
     trim: true,
-    // required: true,
     index: true,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
+    lowercase:true,
     trim: true,
-    // required: true
+    required: true
   },
   displayPicture: {
     type: String,
-    trim: true
+    trim: true,
   },
 });
 

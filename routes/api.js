@@ -1,21 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const { getuserdetails } = require("../Controller/auth.controller");
+const api = require("../controllers/api.controller");
 
 
 
 router
-.get("/user",showuserdetails)
-.post("/user", adduserdetails)
+.get("/user",api.showuserdetails)
+.post("/user", api.adduserdetails)
 
 
 router
-.get("/post",showposts)
-.post("/post",addpost)
+.get("/post",api.showpost)
+.post("/post",api.addpost)
 
 router
-.get("/comment",showcomment)
-.post("/comment",addcomment)
+.get("/comment",api.showcomment)
+.post("/comment",api.addcomment)
 
 
 

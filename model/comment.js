@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
-require("../helper/init_mongoose");
+const User = require('./user');
 const Schema = mongoose.Schema;
+
 const commentSchema = new Schema({
   body: {
     type: String,
     required: true,
   },
   replyto: {
-    type: this
+    type: this,
   },
   userid: {
     type: mongoose.Schema.Type.ObjectId,
