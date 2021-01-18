@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-require("../helper/init_mongoose");
 const Schema = mongoose.Schema;
+
 const optionchema = new Schema({
   question: {
     type: mongoose.Schema.Type.ObjectId,

@@ -1,23 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const { getuserdetails } = require("../Controller/auth.controller");
-
-
-
-router
-.get("/user",showuserdetails)
-.post("/user", adduserdetails)
+const api = require("../controllers/api.controller");
+const { verifyAccessToken } = require("../helper/jwt_helper");
 
 
 router
-.get("/post",showposts)
-.post("/post",addpost)
+  .get("/user", verifyAccessToken, api.showuserdetails)
+  .post("/user", verifyAccessToken, api.adduserdetails);
 
 router
-.get("/comment",showcomment)
-.post("/comment",addcomment)
+  .get("/post", verifyAccessToken, api.showpost)
+  .post("/post", verifyAccessToken, api.addpost);
 
+router
+  .get("/post", verifyAccessToken, api.showpoll)
+  .post("/post", verifyAccessToken, api.addpoll);
 
-
+router
+  .get("/comment", verifyAccessToken, api.showcomment)
 
 module.exports = router;
