@@ -2,33 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  googleId: {
+  name: {
     type: String,
     trim: true,
     required: true
   },
   role: {
     type: String,
-    default: "member",
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: true
-  },
-  branch: {
-    type: String,
-    trim: true,
-  },
-  year: {
-    type: String,
-    trim: true,
-  },
-  rollNo: {
-    type: String,
-    trim: true,
-    index: true,
-    unique: true,
   },
   email: {
     type: String,
@@ -38,9 +18,17 @@ const userSchema = new Schema({
   },
   displayPicture: {
     type: String,
+  },
+  displayName: {
+    type: String,
     trim: true,
+  },
+  authenticationid: {
+    type: String,
+    required:true,
+    unique:true
   },
 });
 
-const user = mongoose.model("User", userSchema);
-module.exports = user;
+const User = mongoose.model("User", userSchema);
+module.exports = User;

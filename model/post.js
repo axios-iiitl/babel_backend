@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require('./user');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -6,14 +7,8 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
-  upvotedusers: [
-    {
-      type: mongoose.Schema.Type.ObjectId,
-      ref: "User",
-    },
-  ],
   user: {
-    type: mongoose.Schema.Type.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
   nsfw: {
@@ -26,15 +21,25 @@ const postSchema = new Schema({
   downvotecount: {
     type: Number,
   },
+  upvotedusers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      unique:true
+    },
+  ],
   downvotedusers: [
     {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   ],
+  commentscount:{
+    type:Number
+  },
   comments: [
     {
-      type: mongoose.Schema.Type.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Comments",
     },
   ],
